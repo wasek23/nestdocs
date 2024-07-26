@@ -1,5 +1,7 @@
 import { Inter as FontSans } from 'next/font/google';
 import { Metadata } from 'next';
+import { ClerkProvider } from '@clerk/nextjs';
+import { dark } from '@clerk/themes';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -15,7 +17,14 @@ export const metadata: Metadata = {
 }
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-	return (
+	return <ClerkProvider
+		appearance={{
+			baseTheme: dark,
+			variables: {
+				colorPrimary: '#3371ff',
+				fontSize: '16px',
+			}
+		}}>
 		<html lang='en' suppressHydrationWarning>
 			<body
 				className={cn(
@@ -26,6 +35,6 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 				{children}
 			</body>
 		</html>
-	);
+	</ClerkProvider>;
 };
 export default RootLayout;
