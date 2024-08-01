@@ -5,6 +5,7 @@ import { dark } from '@clerk/themes';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
+import Provider from './Provider';
 
 const fontSans = FontSans({
 	subsets: ['latin'],
@@ -32,7 +33,9 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 					fontSans.variable
 				)}
 			>
-				{children}
+				<Provider>
+					{children}
+				</Provider>
 			</body>
 		</html>
 	</ClerkProvider>;
